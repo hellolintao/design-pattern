@@ -2,13 +2,9 @@
  * 简单工厂模式
 */
 
-// 行为的抽象
-interface OperationInterFace {
-	GetResult(): number;
-}
 
 // 属性的抽象，但是这不是一个抽象类
-abstract class Operation implements OperationInterFace{
+abstract class Operation {
 	private _numberA: number;
 	private _numberB: number;
 	get numberA(): number {
