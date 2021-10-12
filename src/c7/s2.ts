@@ -22,3 +22,4 @@ class Proxy extends Subject {
 
 var proxy:Proxy = new Proxy();
 proxy.Request();
+export default void 0;

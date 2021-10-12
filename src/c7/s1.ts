@@ -49,8 +49,9 @@ class Proxy implements GiveGift {
 
 var jiao: SchoolGirl = new SchoolGirl('白白');
 
-var Ppoxy: Proxy = new Proxy(jiao);
+var proxy: Proxy = new Proxy(jiao);
 
-Ppoxy.GiveChocolate();
-Ppoxy.GiveFlowers();
-Ppoxy.GiveDolls();
+proxy.GiveChocolate();
+proxy.GiveFlowers();
+proxy.GiveDolls();
+export default void 0;
