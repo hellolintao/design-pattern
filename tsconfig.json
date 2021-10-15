@@ -4,6 +4,9 @@
 	],
 	"compilerOptions": {
 		"noImplicitAny": true,
-		"target": "ES2016"
+		"target": "ES2016",
+		"module": "CommonJS",
+		"experimentalDecorators": true ,
+    	"emitDecoratorMetadata": true
 	}
 }

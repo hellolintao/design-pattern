@@ -26,6 +26,9 @@ class ConcreteSubject extends Subject { // 具体的被观察者，被观察者�
 	}
 }
 
-class ConcreteObserver extends Observer { // 具体的观察者
+class ConcreteObserver extends Observer {
+	Update(): void {
+		throw new Error("Method not implemented.");
+	} // 具体的观察者
 
 }
