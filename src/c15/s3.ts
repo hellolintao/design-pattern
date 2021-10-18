@@ -7,6 +7,9 @@
  */
 import {config} from './config';
 import 'reflect-metadata';
+type Constructor<T = any> = new (...args: any[]) => T; // 声明一个构造函数
+
+const Injectable = ():ClassDecorator => target => {};
 
 class User { // 用户表
     private _id: string;
@@ -41,11 +44,74 @@ class Department { // 部门表
     }
 }
 
+interface IUser { // 用户表行为
+    Insert(user: User): void;
+    GetUser(id: string): User;
+}
+
+interface IDepartment { // 部门表行为
+    Insert(department: Department): void;
+    GetDepartment(id: string): Department;
+}
+
+// @Injectable()
+@Reflect.metadata('SqlserverUser', SqlserverUser)
+class SqlserverUser implements IUser { // sql server对user接口的实现
+    Insert(user: User): void {
+        console.log('使用sql server保存User表', user);
+    }
+    GetUser(id: string): User {
+        console.log('使用sql server检索用户表');
+        return null;
+    }
+}
+
+// @Injectable()
+@Reflect.metadata('AccessUser', AccessUser)
+class AccessUser implements IUser { // access对user接口的实现
+    Insert(user: User): void {
+        console.log('使用Access保存User表', user);
+    }
+    GetUser(id: string): User {
+        console.log('使用Access检索用户表');
+        return null;
+    }
+
+}
+
+// @Injectable()
+@Reflect.metadata('SqlserverDepartment', SqlserverDepartment)
+class SqlserverDepartment implements IDepartment { // sql server对department接口的实现
+    Insert(department: Department): void {
+        console.log('使用department保存User表', department);
+    }
+    GetDepartment(id: string): Department {
+        console.log('使用department检索User表');
+        return null;
+    }
+}
+
+// @Injectable()
+@Reflect.metadata('AccessDepartment', AccessDepartment)
+class AccessDepartment implements IDepartment { // access对department接口的实现
+    Insert(department: Department): void {
+        console.log('使用Access保存department表', department);
+    }
+    GetDepartment(id: string): Department {
+        console.log('使用Access检索department表');
+        return null;
+    }
+}
+
+
 class DataAccess {
     private static readonly db: string = config.ab;
     static createUser():IUser {
-        var result: IUser = null;
-        Reflect.getMetadata(this.db, result);
+        // ad=Sqlserver
+        var result: IUser;
+        console.log(`${this.db}User`);
+        Reflect.getMetadata(`${this.db}User`, result);
+        console.log(result)
         return result;
     }
 
@@ -62,71 +128,15 @@ class DataAccess {
         return result;
     }
 }
-
-interface IUser { // 用户表行为
-    Insert(user: User): void;
-    GetUser(id: string): User;
-}
-
-interface IDepartment { // 部门表行为
-    Insert(department: Department): void;
-    GetDepartment(id: string): Department;
-}
-
-@Reflect.metadata('SqlserverUser', new SqlserverUser())
-class SqlserverUser implements IUser { // sql server对user接口的实现
-    Insert(user: User): void {
-        console.log('使用sql server保存User表', user);
-    }
-    GetUser(id: string): User {
-        console.log('使用sql server检索用户表');
-        return null;
-    }
-}
-
-@Reflect.metadata('AccessUser', new AccessUser())
-class AccessUser implements IUser { // access对user接口的实现
-    Insert(user: User): void {
-        console.log('使用Access保存User表', user);
-    }
-    GetUser(id: string): User {
-        console.log('使用Access检索用户表');
-        return null;
-    }
-
-}
-
-@Reflect.metadata('SqlserverDepartment', new SqlserverDepartment())
-class SqlserverDepartment implements IDepartment { // sql server对department接口的实现
-    Insert(department: Department): void {
-        console.log('使用department保存User表', department);
-    }
-    GetDepartment(id: string): Department {
-        console.log('使用department检索User表');
-        return null;
-    }
-}
-
-@Reflect.metadata('AccessDepartment', new AccessDepartment())
-class AccessDepartment implements IDepartment { // access对department接口的实现
-    Insert(department: Department): void {
-        console.log('使用Access保存department表', department);
-    }
-    GetDepartment(id: string): Department {
-        console.log('使用Access检索department表');
-        return null;
-    }
-}
-
 var user: User = new User();
 user.ID = 'user9';
 var department: Department = new Department();
 department.ID = 'department6';
 
 const iu: IUser = DataAccess.createUser();
-iu.Insert(user);
-iu.GetUser('1');
+// iu.Insert(user);
+// iu.GetUser('1');
 
-const de: IDepartment = DataAccess.creatDepartment();
-de.Insert(department);
-de.GetDepartment('2');
+// const de: IDepartment = DataAccess.creatDepartment();
+// de.Insert(department);
+// de.GetDepartment('2');
