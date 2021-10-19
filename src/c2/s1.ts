@@ -46,3 +46,5 @@ class Context{
 var context: Context = new Context(new ConcreteStrategyA()); // 实例化策略A
 
 context.ContextInterface();
+
+export default void 0;
