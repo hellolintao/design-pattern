@@ -11,13 +11,23 @@ abstract class Subject { // 抽象被观察者类
 	Detach(observer: Observer) { // 删除观察者
 		this.observers.delete(observer);
 	}
-	Notify() { // 通知
+	Notify(type: string) { // 通知
 		this.observers.forEach(observer => {
-			observer.Update();
+			console.log('****************************')
+			console.log('observer', observer.name)
+			console.log('****************************')
+			observer.name == type && observer.Update();
 		});
 	}
 }
 abstract class Observer {
+	private _name: string; // 观察者的私有属性
+	constructor(name: string) {
+		this._name = name;
+	}
+	get name() {
+		return this._name;
+	}
 	abstract Update(): void;
 }
 
@@ -32,14 +42,11 @@ class ConcreteSubject extends Subject { // 具体的被观察者，被观察者�
 }
 
 class ConcreteObserver extends Observer { // 具体的观察者
-	private name: string; // 观察者的私有属性
 	private subject: ConcreteSubject; // 观察的对象
 	private observerState: string; // 观察者状态
-
 	constructor(subject: ConcreteSubject, name: string) { // 实例化被观察的对象
-		super();
+		super(name);
 		this.subject = subject;
-		this.name = name;
 	}
 
 	Update(): void { // 更新状态，执行一系列的操作，并且保存新的观察状态
@@ -62,14 +69,14 @@ s.Attach(new ConcreteObserver(s, 'Y'));
 var z = new ConcreteObserver(s, 'Z');
 s.Attach(z);
 s.subjectState = "ABC";
-s.Notify(); // 所有的观察者都会被触发update
+s.Notify('X'); // 所有的观察者都会被触发update
 console.log(z.Subject)
 
 s.subjectState = "999";
-s.Notify(); // 所有的观察者都会被触发update
+s.Notify('Y'); // 所有的观察者都会被触发update
 console.log(z.Subject)
 console.log('--')
 console.log(z.Subject.subjectState)
 
 s.Detach(z);
-s.Notify();
+s.Notify('Z');
