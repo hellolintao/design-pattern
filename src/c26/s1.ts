@@ -1,5 +1,6 @@
 abstract class Flyweight { // 享元抽象
-    abstract Operation(extrinsicstate: number): void;
+    // 这里也可以保存内部状态
+    abstract Operation(extrinsicstate: number): void; // 这里面的参数实际上是一个外部状态，它还可以传递对象
 }
 
 class ConcreteFlyweight extends Flyweight { // 具体的享元,
@@ -9,6 +10,7 @@ class ConcreteFlyweight extends Flyweight { // 具体的享元,
 }
 
 class UnshareConcreteFlyweight extends Flyweight { // 具体的享元,不强制共享，
+    // 这里可以保存内部状态
     Operation(extrinsicstate: number) {
         console.log('具体的享元，不参与共享', extrinsicstate)
     }
@@ -40,7 +42,7 @@ class FlyweightFactory { // 享元工厂
     }
 }
 
-var extrinsicstate = 22;
+var extrinsicstate = 22; // 外部状态
 
 var factoryFly = new FlyweightFactory(); // 工厂每次得到的对象都是一个
 
