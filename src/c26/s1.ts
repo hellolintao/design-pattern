@@ -50,7 +50,7 @@ var fx: Flyweight = factoryFly.GetFlyweight('X');
 fx.Operation(--extrinsicstate);
 var fx1: Flyweight = factoryFly.GetFlyweight('X');
 fx.Operation(--extrinsicstate);
-console.log(fx == fx1)
+console.log(fx == fx1) 
 
 var fy: Flyweight = factoryFly.GetFlyweight('Y');
 fy.Operation(--extrinsicstate);
