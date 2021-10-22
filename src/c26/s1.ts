@@ -31,7 +31,7 @@ class FlyweightFactory { // 享元工厂
             key: 'Z',
             instance: new ConcreteFlyweight()
         });
-    }
+    } 
 
     GetFlyweight(key: string) {
         var result: ConcreteFlyweight = null;
