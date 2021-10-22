@@ -48,7 +48,7 @@ var factoryFly = new FlyweightFactory(); // 工厂每次得到的对象都是一
 
 var fx: Flyweight = factoryFly.GetFlyweight('X');
 fx.Operation(--extrinsicstate);
-var fx1: Flyweight = factoryFly.GetFlyweight('X');
+var fx1: Flyweight = factoryFly.GetFlyweight('X'); 
 fx.Operation(--extrinsicstate); 
 console.log(fx == fx1) 
 
