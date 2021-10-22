@@ -19,7 +19,7 @@ class Leaf extends ComponentA { // 叶子组件（也就是最末端的组件）
         console.log('cannot remove to a leaf');
     }
     Display(depth: number): void {
-        let i = Array(depth).fill('-');
+        let i = Array(depth).fill('-'); 
         console.log(i.join(''), this.name);
     }
 
