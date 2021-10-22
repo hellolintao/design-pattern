@@ -1,6 +1,6 @@
 abstract class AbstractExpression { // 抽象表达式
     abstract Interpret(context: Context1): void;
-}
+} 
 
 class TerminalExpress extends AbstractExpression { // 终结符表达式
     Interpret(context: Context1): void {
@@ -13,7 +13,7 @@ class NonterminalExpress extends AbstractExpression { // 非终结符表达式
         console.log('非终端解释器')
     }
 }
-
+ 
 
 class Context1 { // 包含解释器之外的一些全局信息
     private _input: string;
@@ -42,4 +42,4 @@ list.add(new TerminalExpress());
 
 list.forEach((expression) => {
     expression.Interpret(con);
-})
+}) 
