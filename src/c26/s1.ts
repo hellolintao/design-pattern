@@ -40,7 +40,7 @@ class FlyweightFactory { // 享元工厂
         });
         return result;
     }
-}
+} 
 
 var extrinsicstate = 22; // 外部状态
 
