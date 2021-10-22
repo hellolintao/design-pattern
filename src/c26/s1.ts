@@ -37,7 +37,7 @@ class FlyweightFactory { // 享元工厂
         var result: ConcreteFlyweight = null;
         this._flyweights.forEach((flyweight: any) => {
             flyweight.key == key && (result = flyweight.instance)
-        });
+        }); 
         return result;
     }
 } 
