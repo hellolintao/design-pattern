@@ -58,5 +58,5 @@ fy.Operation(--extrinsicstate);
 var fz: Flyweight = factoryFly.GetFlyweight('Z');
 fz.Operation(--extrinsicstate);
 
-var uf: UnshareConcreteFlyweight = new UnshareConcreteFlyweight();
+var uf: UnshareConcreteFlyweight = new UnshareConcreteFlyweight(); 
 uf.Operation(--extrinsicstate);
