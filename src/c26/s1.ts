@@ -47,7 +47,7 @@ var extrinsicstate = 22; // 外部状态
 var factoryFly = new FlyweightFactory(); // 工厂每次得到的对象都是一个
 
 var fx: Flyweight = factoryFly.GetFlyweight('X');
-fx.Operation(--extrinsicstate);
+fx.Operation(--extrinsicstate); 
 var fx1: Flyweight = factoryFly.GetFlyweight('X'); 
 fx.Operation(--extrinsicstate); 
 console.log(fx == fx1) 
@@ -59,4 +59,4 @@ var fz: Flyweight = factoryFly.GetFlyweight('Z');
 fz.Operation(--extrinsicstate);
 
 var uf: UnshareConcreteFlyweight = new UnshareConcreteFlyweight(); 
-uf.Operation(--extrinsicstate); 
+uf.Operation(--extrinsicstate);  
