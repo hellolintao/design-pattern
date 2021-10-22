@@ -41,5 +41,5 @@ list.add(new TerminalExpress());
 list.add(new TerminalExpress());
 
 list.forEach((expression) => {
-    expression.Interpret(con);
-}) 
+    expression.Interpret(con); 
+})
