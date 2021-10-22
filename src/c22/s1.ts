@@ -25,7 +25,6 @@ abstract class Abstraction { // 抽象
 
 class RefinedAbstraction extends Abstraction { // 提炼一个抽象
     Operation() {
-        console.log('ovvewrite') 
         this.implementor.Operation() 
     }
 }
