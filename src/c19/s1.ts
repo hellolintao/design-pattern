@@ -42,7 +42,7 @@ class Composite extends ComponentA { // 分支组件，可以添加若干“叶�
         let i = Array(depth).fill('-');
         console.log(i.join(''), this.name);
         this.list.forEach((component) => {
-            component.Display(depth + 2);
+            component.Display(depth + 2); 
         })
     }
 }
